@@ -27,9 +27,32 @@ def find_contact(find_element):
 
 def add_contact(add_element):
      with open('phone_book.txt', 'a', encoding='utf8') as data:
-          data.writelines(add_element)
+          data.write(add_element +'\n')
 
 def exit_program():
     data = open('phone_book.txt', 'r', encoding='utf8')
     data.close()
+
+def main_menu(numb):
+    if numb == 1:
+        print_all_contacts()
+    elif numb == 2:
+        find_element = input('Введите Ф.И.О. либо номер телефона для поиска: ')
+        find_contact(find_element)
+    elif numb == 3:
+        add_element = input('Введите Ф.И.О. и номер телефона через пробел: ')
+        add_contact(add_element)
+    elif numb == 4:
+        exit_program()
+
+numb = int(input('Введите:\n 1 - для печати всех контактов;\n 2 - для поиска контакта;\n\
+ 3 - для добавления нового контакта в справочник;\n 4 - для выхода из программы:  '))
+main_menu(numb)
+
+
+
+# add_contact('Николай Котов +78651790625')
+# print_all_contacts()
+# find_contact('Котов')
+
 
